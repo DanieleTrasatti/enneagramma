@@ -1,11 +1,28 @@
- <!doctype html>
+<!doctype html>
 <html lang="it">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-       <title>Enneagramma — Scopri il tuo tipo di personalità ◆ Daniele Trasatti</title>
+    <meta name="description" content="Scopri il tuo tipo di personalità Enneagramma. Esplora i 9 tipi, caratteristiche, punti di forza e aree di crescita." />
+    <meta property="og:title" content="Enneagramma — Scopri il tuo tipo di personalità" />
+    <meta property="og:description" content="Esplora i 9 tipi di personalità dell'Enneagramma e comprendi le tue motivazioni." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#1a1a2e" />
+    <title>Enneagramma — Scopri il tuo tipo di personalità ◆ Daniele Trasatti</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      :root {
+        --color-type-1: #4a90e2;
+        --color-type-2: #e74c3c;
+        --color-type-3: #f39c12;
+        --color-type-4: #9b59b6;
+        --color-type-5: #1abc9c;
+        --color-type-6: #3498db;
+        --color-type-7: #e67e22;
+        --color-type-8: #c0392b;
+        --color-type-9: #27ae60;
+      }
 
       body {
         font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
@@ -85,21 +102,26 @@
         background: rgba(233,69,96,0.3);
       }
 
+      .type-btn:focus {
+        outline: 2px solid #e94560;
+        outline-offset: 2px;
+      }
+
       .type-btn.active {
         transform: scale(1.2);
         box-shadow: 0 0 20px rgba(233,69,96,0.5);
       }
 
       /* Colori specifici per ogni bottone quando attivo */
-      .type-btn[data-type="1"].active { background: #4a90e2; border-color: #4a90e2; box-shadow: 0 0 20px rgba(74,144,226,0.5); }
-      .type-btn[data-type="2"].active { background: #e74c3c; border-color: #e74c3c; box-shadow: 0 0 20px rgba(231,76,60,0.5); }
-      .type-btn[data-type="3"].active { background: #f39c12; border-color: #f39c12; box-shadow: 0 0 20px rgba(243,156,18,0.5); }
-      .type-btn[data-type="4"].active { background: #9b59b6; border-color: #9b59b6; box-shadow: 0 0 20px rgba(155,89,182,0.5); }
-      .type-btn[data-type="5"].active { background: #1abc9c; border-color: #1abc9c; box-shadow: 0 0 20px rgba(26,188,156,0.5); }
-      .type-btn[data-type="6"].active { background: #3498db; border-color: #3498db; box-shadow: 0 0 20px rgba(52,152,219,0.5); }
-      .type-btn[data-type="7"].active { background: #e67e22; border-color: #e67e22; box-shadow: 0 0 20px rgba(230,126,34,0.5); }
-      .type-btn[data-type="8"].active { background: #c0392b; border-color: #c0392b; box-shadow: 0 0 20px rgba(192,57,43,0.5); }
-      .type-btn[data-type="9"].active { background: #27ae60; border-color: #27ae60; box-shadow: 0 0 20px rgba(39,174,96,0.5); }
+      .type-btn[data-type="1"].active { background: var(--color-type-1); border-color: var(--color-type-1); box-shadow: 0 0 20px rgba(74,144,226,0.5); }
+      .type-btn[data-type="2"].active { background: var(--color-type-2); border-color: var(--color-type-2); box-shadow: 0 0 20px rgba(231,76,60,0.5); }
+      .type-btn[data-type="3"].active { background: var(--color-type-3); border-color: var(--color-type-3); box-shadow: 0 0 20px rgba(243,156,18,0.5); }
+      .type-btn[data-type="4"].active { background: var(--color-type-4); border-color: var(--color-type-4); box-shadow: 0 0 20px rgba(155,89,182,0.5); }
+      .type-btn[data-type="5"].active { background: var(--color-type-5); border-color: var(--color-type-5); box-shadow: 0 0 20px rgba(26,188,156,0.5); }
+      .type-btn[data-type="6"].active { background: var(--color-type-6); border-color: var(--color-type-6); box-shadow: 0 0 20px rgba(52,152,219,0.5); }
+      .type-btn[data-type="7"].active { background: var(--color-type-7); border-color: var(--color-type-7); box-shadow: 0 0 20px rgba(230,126,34,0.5); }
+      .type-btn[data-type="8"].active { background: var(--color-type-8); border-color: var(--color-type-8); box-shadow: 0 0 20px rgba(192,57,43,0.5); }
+      .type-btn[data-type="9"].active { background: var(--color-type-9); border-color: var(--color-type-9); box-shadow: 0 0 20px rgba(39,174,96,0.5); }
 
       .or-text {
         color: #888;
@@ -145,6 +167,11 @@
 
       .manual-input button:hover {
         background: #ff6b81;
+      }
+
+      .manual-input button:focus {
+        outline: 2px solid #ff6b81;
+        outline-offset: 2px;
       }
 
       .error-msg {
@@ -232,41 +259,41 @@
       .healthy-box h4 { color: #51cf66; margin-bottom: 6px; font-size: 0.95em; }
 
       /* Colori per tipo */
-      .type-1 { border-left-color: #4a90e2; }
-      .type-1 .type-number { background: #4a90e2; }
-      .type-1 h2 { color: #4a90e2; }
+      .type-1 { border-left-color: var(--color-type-1); }
+      .type-1 .type-number { background: var(--color-type-1); }
+      .type-1 h2 { color: var(--color-type-1); }
 
-      .type-2 { border-left-color: #e74c3c; }
-      .type-2 .type-number { background: #e74c3c; }
-      .type-2 h2 { color: #e74c3c; }
+      .type-2 { border-left-color: var(--color-type-2); }
+      .type-2 .type-number { background: var(--color-type-2); }
+      .type-2 h2 { color: var(--color-type-2); }
 
-      .type-3 { border-left-color: #f39c12; }
-      .type-3 .type-number { background: #f39c12; }
-      .type-3 h2 { color: #f39c12; }
+      .type-3 { border-left-color: var(--color-type-3); }
+      .type-3 .type-number { background: var(--color-type-3); }
+      .type-3 h2 { color: var(--color-type-3); }
 
-      .type-4 { border-left-color: #9b59b6; }
-      .type-4 .type-number { background: #9b59b6; }
-      .type-4 h2 { color: #9b59b6; }
+      .type-4 { border-left-color: var(--color-type-4); }
+      .type-4 .type-number { background: var(--color-type-4); }
+      .type-4 h2 { color: var(--color-type-4); }
 
-      .type-5 { border-left-color: #1abc9c; }
-      .type-5 .type-number { background: #1abc9c; }
-      .type-5 h2 { color: #1abc9c; }
+      .type-5 { border-left-color: var(--color-type-5); }
+      .type-5 .type-number { background: var(--color-type-5); }
+      .type-5 h2 { color: var(--color-type-5); }
 
-      .type-6 { border-left-color: #3498db; }
-      .type-6 .type-number { background: #3498db; }
-      .type-6 h2 { color: #3498db; }
+      .type-6 { border-left-color: var(--color-type-6); }
+      .type-6 .type-number { background: var(--color-type-6); }
+      .type-6 h2 { color: var(--color-type-6); }
 
-      .type-7 { border-left-color: #e67e22; }
-      .type-7 .type-number { background: #e67e22; }
-      .type-7 h2 { color: #e67e22; }
+      .type-7 { border-left-color: var(--color-type-7); }
+      .type-7 .type-number { background: var(--color-type-7); }
+      .type-7 h2 { color: var(--color-type-7); }
 
-      .type-8 { border-left-color: #c0392b; }
-      .type-8 .type-number { background: #c0392b; }
-      .type-8 h2 { color: #c0392b; }
+      .type-8 { border-left-color: var(--color-type-8); }
+      .type-8 .type-number { background: var(--color-type-8); }
+      .type-8 h2 { color: var(--color-type-8); }
 
-      .type-9 { border-left-color: #27ae60; }
-      .type-9 .type-number { background: #27ae60; }
-      .type-9 h2 { color: #27ae60; }
+      .type-9 { border-left-color: var(--color-type-9); }
+      .type-9 .type-number { background: var(--color-type-9); }
+      .type-9 h2 { color: var(--color-type-9); }
 
       .back-btn {
         display: block;
@@ -287,6 +314,11 @@
         color: white;
       }
 
+      .back-btn:focus {
+        outline: 2px solid #e94560;
+        outline-offset: 2px;
+      }
+
       a { color: #e94560; }
       a:hover { color: #ff6b81; }
 
@@ -304,7 +336,8 @@
         h1 { font-size: 1.8em; }
         .stress-healthy { grid-template-columns: 1fr; }
         .input-section { padding: 25px 15px; }
-        .type-btn { width: 45px; height: 45px; font-size: 1.1em; }
+        .type-btn { width: 60px; height: 60px; font-size: 1.1em; }
+        .type-card { padding: 20px; }
       }
     </style>
   </head>
@@ -315,7 +348,6 @@
         <p>Daniele Trasatti</p>
         <br><br>
         <p><strong>Scopri il tuo tipo di personalità</strong> — </p>
-        
       </header>
 
       <!-- === SEZIONE INPUT === -->
@@ -323,23 +355,23 @@
         <h2>🔮 Qual è il tuo tipo?</h2>
         <p>Seleziona il numero del tipo di Enneagramma per visualizzarne le caratteristiche.</p>
 
-        <div class="type-buttons">
-          <button class="type-btn" data-type="1" onclick="mostraTipo(1)">1</button>
-          <button class="type-btn" data-type="2" onclick="mostraTipo(2)">2</button>
-          <button class="type-btn" data-type="3" onclick="mostraTipo(3)">3</button>
-          <button class="type-btn" data-type="4" onclick="mostraTipo(4)">4</button>
-          <button class="type-btn" data-type="5" onclick="mostraTipo(5)">5</button>
-          <button class="type-btn" data-type="6" onclick="mostraTipo(6)">6</button>
-          <button class="type-btn" data-type="7" onclick="mostraTipo(7)">7</button>
-          <button class="type-btn" data-type="8" onclick="mostraTipo(8)">8</button>
-          <button class="type-btn" data-type="9" onclick="mostraTipo(9)">9</button>
+        <div class="type-buttons" id="typeButtons">
+          <button class="type-btn" data-type="1" aria-label="Tipo 1: Il Riformatore — Il Perfezionista">1</button>
+          <button class="type-btn" data-type="2" aria-label="Tipo 2: L'Aiutante — Il Donatore">2</button>
+          <button class="type-btn" data-type="3" aria-label="Tipo 3: Il Realizzatore — L'Attore">3</button>
+          <button class="type-btn" data-type="4" aria-label="Tipo 4: L'Individualista — Il Romantico">4</button>
+          <button class="type-btn" data-type="5" aria-label="Tipo 5: L'Investigatore — L'Osservatore">5</button>
+          <button class="type-btn" data-type="6" aria-label="Tipo 6: Il Leale — Il Problem-Solver">6</button>
+          <button class="type-btn" data-type="7" aria-label="Tipo 7: L'Entusiasta — L'Epicureo">7</button>
+          <button class="type-btn" data-type="8" aria-label="Tipo 8: Il Capo — Il Protettore">8</button>
+          <button class="type-btn" data-type="9" aria-label="Tipo 9: Il Pacificatore — Il Mediatore">9</button>
         </div>
 
         <p class="or-text">— oppure inserisci manualmente —</p>
 
         <div class="manual-input">
           <input type="number" id="numeroInput" min="1" max="9" placeholder="1-9" />
-          <button onclick="mostraTipoManuale()">Mostra</button>
+          <button id="mostraBtn">Mostra</button>
         </div>
         <p class="error-msg" id="errorMsg">Inserisci un numero valido tra 1 e 9</p>
       </div>
@@ -354,6 +386,14 @@
     </div>
 
     <script>
+      // Verifica che gli elementi DOM esistono
+      const requiredElements = ['inputSection', 'risultato', 'numeroInput', 'errorMsg', 'typeButtons', 'mostraBtn'];
+      requiredElements.forEach(id => {
+        if (!document.getElementById(id)) {
+          console.error(`Elemento richiesto non trovato: ${id}`);
+        }
+      });
+
       // Dati dei 9 tipi
       const tipi = {
         1: {
@@ -382,7 +422,7 @@
           nome: "Il Realizzatore — L'Attore",
           motivazione: "Il desiderio di essere ammirato, riconosciuto e avere successo. Trova valore nell'efficienza e nei risultati.",
           luce: ["Capacità di motivare e ispirare gli altri", "Efficienza e orientamento ai risultati", "Adattabilità e carisma", "Visione strategica", "Determinazione e resilienza"],
-          ombra: ["Identità costruita sull'immagine e sul successo", "Competitività eccessiva", "Difficoltà a riconoscere i propri sentimenti reali", "Superficialità relazionale", "Paura del fallimento e del rifiuto"],
+          ombra: ["Identità costruita sull'immagine e sul successo", "Competitività eccessiva", "Difficoltà a riconoscere i propri sentimenti reali", "Superficialità relazionale", "Paura del fallimento"],
           stress: "Diventa apatico, disimpegnato, confuso, perde la motivazione, si sente inutile e si rifugia nell'indifferenza.",
           crescita: "Diventa più autentico, leale, collaborativo, si ferma a riflettere, sviluppa relazioni genuine basate sulla fiducia.",
           stressVerso: "9",
@@ -392,7 +432,7 @@
         4: {
           nome: "L'Individualista — Il Romantico",
           motivazione: "Il desiderio di trovare se stesso e il proprio significato unico. Cerca autenticità emotiva e profondità.",
-          luce: ["Creatività e sensibilità artistica", "Profondità emotiva e autenticità", "Capacità di trasformare il dolore in bellezza", "Introspezione e consapevolezza di sé", "Empatia per il dolore altrui"],
+          luce: ["Creatività e sensibilità artistica", "Profondità emotiva e autenticità", "Capacità di trasformare il dolore in bellezza", "Introspezione e consapevolezza di sé", "Empatia per i sofferenti"],
           ombra: ["Malinconia cronica e auto-commiserazione", "Sentimento di essere 'diversi' e incompresi", "Invidia verso gli altri", "Drammatizzazione emotiva", "Difficoltà a vivere nel presente"],
           stress: "Diventa bisognoso di attenzione, manipolativo emotivamente, si aggrappa agli altri per sentirsi amato e validato.",
           crescita: "Trasforma la creatività in azione costruttiva, sviluppa disciplina, trova bellezza nel quotidiano, accetta la realtà.",
@@ -425,8 +465,8 @@
         7: {
           nome: "L'Entusiasta — L'Epicureo",
           motivazione: "Il desiderio di essere soddisfatto e felice. Cerca esperienze piacevoli e evita il dolore e la limitazione.",
-          luce: ["Ottimismo contagioso e gioia di vivere", "Creatività e visione delle possibilità", "Adattabilità e spirito d'avventura", "Capacità di risolvere problemi con entusiasmo", "Apprezzamento della diversità"],
-          ombra: ["Evitamento del dolore e della sofferenza", "Impulsività e mancanza di impegno", "Superficialità e difficoltà a completare progetti", "Gluttonia esperienziale", "Difficoltà a stare con le emozioni negative"],
+          luce: ["Ottimismo contagioso e gioia di vivere", "Creatività e visione delle possibilità", "Adattabilità e spirito d'avventura", "Capacità di risolvere problemi con entusiasmo", "Apprezzamento della bellezza"],
+          ombra: ["Evitamento del dolore e della sofferenza", "Impulsività e mancanza di impegno", "Superficialità e difficoltà a completare progetti", "Gluttonia esperienziale", "Difficoltà a stare fermo"],
           stress: "Diventa rigido, critico, perfezionista, ossessionato dalle regole, intollerante verso sé e gli altri, depresso.",
           crescita: "Diventa più riflessivo, concentrato, approfondisce le esperienze, sviluppa disciplina intellettuale, trova gioia nella semplicità.",
           stressVerso: "1",
@@ -461,7 +501,7 @@
         // Rimuovi classe active da tutti i bottoni
         document.querySelectorAll('.type-btn').forEach(btn => btn.classList.remove('active'));
         // Aggiungi classe active al bottone cliccato
-        document.querySelector(`.type-btn[data-type="${numero}"]`).classList.add('active');
+        document.querySelector(`.type-btn[data-type="${numero}"]`)?.classList.add('active');
 
         const tipo = tipi[numero];
         if (!tipo) return;
@@ -504,10 +544,12 @@
             </div>
           </div>
 
-          <button class="back-btn" onclick="tornaIndietro()">← Torna alla selezione</button>
+          <button class="back-btn" id="backBtn">← Torna alla selezione</button>
         `;
 
         risultatoDiv.style.display = 'block';
+        document.getElementById('backBtn')?.addEventListener('click', tornaIndietro);
+        document.getElementById('backBtn')?.focus();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
@@ -534,10 +576,26 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
+      // Event listener per i bottoni numerati
+      document.querySelectorAll('.type-btn').forEach(btn => {
+        btn.addEventListener('click', () => mostraTipo(parseInt(btn.dataset.type)));
+      });
+
+      // Event listener per il bottone "Mostra"
+      document.getElementById('mostraBtn')?.addEventListener('click', mostraTipoManuale);
+
       // Permette di premere Enter nell'input
       document.getElementById('numeroInput').addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
           mostraTipoManuale();
+        }
+      });
+
+      // Tastiera: premi 1-9 per mostrare il tipo
+      document.addEventListener('keypress', (e) => {
+        const num = parseInt(e.key);
+        if (num >= 1 && num <= 9 && !document.getElementById('numeroInput').matches(':focus')) {
+          mostraTipo(num);
         }
       });
     </script>
