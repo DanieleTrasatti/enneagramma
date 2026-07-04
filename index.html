@@ -357,13 +357,13 @@
         <div class="type-buttons" id="typeButtons">
           <button class="type-btn" data-type="1" aria-label="Tipo 1: Il Perfezionista">1</button>
           <button class="type-btn" data-type="2" aria-label="Tipo 2: Il Donatore - L'Aiutante">2</button>
-          <button class="type-btn" data-type="3" aria-label="Tipo 3: L'Eseccutore">3</button>
-          <button class="type-btn" data-type="4" aria-label="Tipo 4: IL Romantico — Il Romantico">4</button>
+          <button class="type-btn" data-type="3" aria-label="Tipo 3: Il Realizzatore">3</button>
+          <button class="type-btn" data-type="4" aria-label="Tipo 4: Il Romantico — L'Individualista">4</button>
           <button class="type-btn" data-type="5" aria-label="Tipo 5: L'Osservatore">5</button>
           <button class="type-btn" data-type="6" aria-label="Tipo 6: Lo Scettico Leale">6</button>
-          <button class="type-btn" data-type="7" aria-label="Tipo 7: L'Ottimista— L'Epicureo">7</button>
+          <button class="type-btn" data-type="7" aria-label="Tipo 7: L'Ottimista — L'Epicureo">7</button>
           <button class="type-btn" data-type="8" aria-label="Tipo 8: Il Capo — Il Protettore">8</button>
-          <button class="type-btn" data-type="9" aria-label="Tipo 9: Il Mediatore — Il Mediatore">9</button>
+          <button class="type-btn" data-type="9" aria-label="Tipo 9: Il Mediatore — Il Pacificatore">9</button>
         </div>
 
         <p class="or-text">— oppure inserisci manualmente —</p>
@@ -393,106 +393,216 @@
         }
       });
 
-      // Dati dei 9 tipi
+      const numeroInput = document.getElementById('numeroInput');
+
+      // Dati dei 9 tipi (versione sanificata: rimosi i placeholder e completati i testi)
       const tipi = {
         1: {
           nome: "Il Riformatore — Il Perfezionista",
           motivazione: "Il desiderio di essere giusto, corretto e migliorare il mondo. Ha un forte senso del dovere e della responsabilità morale.",
-          luce: ["Integrità morale e coerenza etica", "Attenzione ai dettagli e precisione", "Capacità di migliorare sistemi e processi", "Disciplina e autodisciplina", "Idealismo costruttivo"],
-          ombra: ["Rigidità e intolleranza verso gli errori", "Collera repressa che esplode in critiche", "Perfezionismo paralizzante", "Sentimento di superiorità morale", "Difficoltà a rilassarsi e godersi la vita"],
+          luce: [
+            "Integrità morale e coerenza etica",
+            "Attenzione ai dettagli e precisione",
+            "Capacità di migliorare sistemi e processi",
+            "Disciplina e autodisciplina",
+            "Idealismo costruttivo"
+          ],
+          ombra: [
+            "Rigidità e intolleranza verso gli errori",
+            "Collera repressa che esplode in critiche",
+            "Perfezionismo paralizzante",
+            "Sentimento di superiorità morale",
+            "Difficoltà a rilassarsi e lasciar andare"
+          ],
           stress: "Diventa depresso, irritabile, invidioso, si sente incompreso e si chiude in malinconia e rancore.",
           crescita: "Diventa più spontaneo, gioioso, accettante dell'imperfezione, capace di divertirsi e vedere il lato positivo.",
           stressVerso: "4",
           crescitaVerso: "7",
-          colore: "4a90e2"
+          colore: "#4a90e2"
         },
         2: {
           nome: "L'Aiutante — Il Donatore",
           motivazione: "Il desiderio di essere amato e necessario agli altri. Trova valore nel dare e nel prendersi cura delle persone.",
-          luce: ["Empatia profonda e calore umano", "Generosità disinteressata", "Capacità di creare connessioni autentiche", "Intuizione emotiva acuta", "Altruismo genuino"],
-          ombra: ["Bisogno di essere necessario che diventa possessività", "Manipolazione emotiva mascherata da gentilezza", "Trascurare i propri bisogni", "Orgoglio nascosto", "Difficoltà a dire di no"],
+          luce: [
+            "Empatia profonda e calore umano",
+            "Generosità disinteressata",
+            "Capacità di creare connessioni autentiche",
+            "Intuizione emotiva acuta",
+            "Altruismo genuino"
+          ],
+          ombra: [
+            "Bisogno di essere necessario che diventa possessività",
+            "Manipolazione emotiva mascherata da gentilezza",
+            "Trascurare i propri bisogni",
+            "Orgoglio nascosto",
+            "Difficoltà a stabilire confini sani"
+          ],
           stress: "Diventa dominante, aggressivo, controllante, usa la collera per ottenere ciò che vuole, si sente tradito.",
           crescita: "Scopre i propri bisogni autentici, sviluppa creatività, accetta di non essere indispensabile, trova valore in sé stesso.",
           stressVerso: "8",
           crescitaVerso: "4",
-          colore: "e74c3c"
+          colore: "#e74c3c"
         },
         3: {
           nome: "Il Realizzatore — L'Attore",
           motivazione: "Il desiderio di essere ammirato, riconosciuto e avere successo. Trova valore nell'efficienza e nei risultati.",
-          luce: ["Capacità di motivare e ispirare gli altri", "Efficienza e orientamento ai risultati", "Adattabilità e carisma", "Visione strategica", "Determinazione e resilienza"],
-          ombra: ["Identità costruita sull'immagine e sul successo", "Competitività eccessiva", "Difficoltà a riconoscere i propri sentimenti reali", "Superficialità relazionale", "Paura del fallimento"],
+          luce: [
+            "Capacità di motivare e ispirare gli altri",
+            "Efficienza e orientamento ai risultati",
+            "Adattabilità e carisma",
+            "Visione strategica",
+            "Determinazione e resilienza"
+          ],
+          ombra: [
+            "Identità costruita sull'immagine e sul successo",
+            "Competitività eccessiva",
+            "Difficoltà a riconoscere i propri sentimenti reali",
+            "Relazioni superficiali",
+            "Paura del fallimento"
+          ],
           stress: "Diventa apatico, disimpegnato, confuso, perde la motivazione, si sente inutile e si rifugia nell'indifferenza.",
           crescita: "Diventa più autentico, leale, collaborativo, si ferma a riflettere, sviluppa relazioni genuine basate sulla fiducia.",
           stressVerso: "9",
           crescitaVerso: "6",
-          colore: "f39c12"
+          colore: "#f39c12"
         },
         4: {
           nome: "L'Individualista — Il Romantico",
           motivazione: "Il desiderio di trovare se stesso e il proprio significato unico. Cerca autenticità emotiva e profondità.",
-          luce: ["Creatività e sensibilità artistica", "Profondità emotiva e autenticità", "Capacità di trasformare il dolore in bellezza", "Introspezione e consapevolezza di sé", "Empatia per i sofferenti"],
-          ombra: ["Malinconia cronica e auto-commiserazione", "Sentimento di essere 'diversi' e incompresi", "Invidia verso gli altri", "Drammatizzazione emotiva", "Difficoltà a vivere nel presente"],
+          luce: [
+            "Creatività e sensibilità artistica",
+            "Profondità emotiva e autenticità",
+            "Capacità di trasformare il dolore in bellezza",
+            "Introspezione e consapevolezza di sé",
+            "Empatia per le sfumature emotive"
+          ],
+          ombra: [
+            "Malinconia cronica e auto-commiserazione",
+            "Sentimento di essere 'diversi' e incompresi",
+            "Invidia verso gli altri",
+            "Drammatizzazione emotiva",
+            "Difficoltà a vivere nel presente e accettare la quotidianità"
+          ],
           stress: "Diventa bisognoso di attenzione, manipolativo emotivamente, si aggrappa agli altri per sentirsi amato e validato.",
           crescita: "Trasforma la creatività in azione costruttiva, sviluppa disciplina, trova bellezza nel quotidiano, accetta la realtà.",
           stressVerso: "2",
           crescitaVerso: "1",
-          colore: "9b59b6"
+          colore: "#9b59b6"
         },
         5: {
           nome: "L'Investigatore — L'Osservatore",
           motivazione: "Il desiderio di essere competente e capire il mondo. Trova sicurezza nella conoscenza e nell'autonomia.",
-          luce: ["Intelligenza analitica e curiosità intellettuale", "Indipendenza e autonomia", "Capacità di vedere pattern nascosti", "Obiettività e lucidità", "Concentrazione profonda"],
-          ombra: ["Isolamento e ritiro dal mondo", "Avarizia emotiva e difficoltà a condividere", "Arroganza intellettuale", "Paralisi da analisi eccessiva", "Difficoltà a esprimere emozioni"],
+          luce: [
+            "Intelligenza analitica e curiosità intellettuale",
+            "Indipendenza e autonomia",
+            "Capacità di vedere pattern nascosti",
+            "Obiettività e lucidità",
+            "Concentrazione profonda"
+          ],
+          ombra: [
+            "Isolamento e ritiro dal mondo",
+            "Avarizia emotiva e difficoltà a condividere",
+            "Arroganza intellettuale",
+            "Paralisi da analisi eccessiva",
+            "Difficoltà a esprimere emozioni"
+          ],
           stress: "Diventa dispersivo, iperattivo, cerca distrazioni compulsive, evita i problemi con attività superficiali e spese eccessive.",
           crescita: "Diventa assertivo, agisce con fiducia, condivide la conoscenza, assume leadership, partecipa attivamente alla vita.",
           stressVerso: "7",
           crescitaVerso: "8",
-          colore: "1abc9c"
+          colore: "#1abc9c"
         },
         6: {
           nome: "Il Leale — Il Problem-Solver",
           motivazione: "Il desiderio di sicurezza e supporto. Cerca strutture affidabili e relazioni di fiducia.",
-          luce: ["Lealtà e affidabilità", "Previsione dei problemi e pianificazione", "Coraggio quando agisce per gli altri", "Senso di comunità e appartenenza", "Onestà e umiltà"],
-          ombra: ["Ansia cronica e ipocondria", "Dipendenza dall'autorità o ribellione eccessiva", "Sospettosità e diffidenza", "Indecisione paralizzante", "Proiezione delle proprie paure sugli altri"],
+          luce: [
+            "Lealtà e affidabilità",
+            "Previsione dei problemi e pianificazione",
+            "Coraggio quando agisce per gli altri",
+            "Senso di comunità e appartenenza",
+            "Onestà e umiltà"
+          ],
+          ombra: [
+            "Ansia cronica e ipocondria",
+            "Dipendenza dall'autorità o ribellione eccessiva",
+            "Sospettosità e diffidenza",
+            "Indecisione paralizzante",
+            "Proiezione delle proprie paure sugli altri"
+          ],
           stress: "Diventa competitivo, ossessionato dall'immagine, cerca successo per compensare l'insicurezza, diventa superficiale.",
           crescita: "Diventa sereno, fiducioso, rilassato, accetta l'incertezza, trova pace interiore e diventa un mediatore naturale.",
           stressVerso: "3",
           crescitaVerso: "9",
-          colore: "3498db"
+          colore: "#3498db"
         },
         7: {
           nome: "L'Entusiasta — L'Epicureo",
           motivazione: "Il desiderio di essere soddisfatto e felice. Cerca esperienze piacevoli e evita il dolore e la limitazione.",
-          luce: ["Ottimismo contagioso e gioia di vivere", "Creatività e visione delle possibilità", "Adattabilità e spirito d'avventura", "Capacità di risolvere problemi con entusiasmo", "Apprezzamento della bellezza"],
-          ombra: ["Evitamento del dolore e della sofferenza", "Impulsività e mancanza di impegno", "Superficialità e difficoltà a completare progetti", "Gluttonia esperienziale", "Difficoltà a stare fermo"],
+          luce: [
+            "Ottimismo contagioso e gioia di vivere",
+            "Creatività e visione delle possibilità",
+            "Adattabilità e spirito d'avventura",
+            "Capacità di risolvere problemi con entusiasmo",
+            "Energia e slancio propositivo"
+          ],
+          ombra: [
+            "Evitamento del dolore e della sofferenza",
+            "Impulsività e mancanza di impegno",
+            "Superficialità e difficoltà a completare progetti",
+            "Ricerca compulsiva di stimoli",
+            "Difficoltà a gestire la frustrazione"
+          ],
           stress: "Diventa rigido, critico, perfezionista, ossessionato dalle regole, intollerante verso sé e gli altri, depresso.",
           crescita: "Diventa più riflessivo, concentrato, approfondisce le esperienze, sviluppa disciplina intellettuale, trova gioia nella semplicità.",
           stressVerso: "1",
           crescitaVerso: "5",
-          colore: "e67e22"
+          colore: "#e67e22"
         },
         8: {
           nome: "Il Capo — Il Protettore",
           motivazione: "Il desiderio di essere forte e controllare il proprio destino. Cerca proteggere sé e gli altri dall'ingiustizia.",
-          luce: ["Leadership naturale e carisma", "Coraggio e determinazione", "Protezione dei deboli e giustizia", "Autenticità e direttezza", "Resilienza e forza interiore"],
-          ombra: ["Dominazione e controllo eccessivo", "Collera esplosiva e intimidazione", "Rifiuto della vulnerabilità", "Escesso e mancanza di moderazione", "Difficoltà a fidarsi e a cedere il controllo"],
+          luce: [
+            "Leadership naturale e carisma",
+            "Coraggio e determinazione",
+            "Protezione dei deboli e senso di giustizia",
+            "Autenticità e direttezza",
+            "Resilienza e forza interiore"
+          ],
+          ombra: [
+            "Dominazione e controllo eccessivo",
+            "Collera esplosiva e intimidazione",
+            "Rifiuto della vulnerabilità",
+            "Eccesso di forza senza moderazione",
+            "Difficoltà a delegare e fidarsi"
+          ],
           stress: "Diventa ritirato, paranoico, ossessivo, cerca di controllare attraverso l'informazione, si isola e diventa sospettoso.",
           crescita: "Diventa generoso, protettivo con dolcezza, sviluppa empatia, usa il potere per servire gli altri, accetta la vulnerabilità.",
           stressVerso: "5",
           crescitaVerso: "2",
-          colore: "c0392b"
+          colore: "#c0392b"
         },
         9: {
           nome: "Il Pacificatore — Il Mediatore",
           motivazione: "Il desiderio di pace interiore e armonia esterna. Cerca evitare conflitti e mantenere l'equilibrio.",
-          luce: ["Capacità di vedere tutti i punti di vista", "Calma e stabilità emotiva", "Accettazione e non giudizio", "Capacità di mediare e riconciliare", "Pazienza e tolleranza"],
-          ombra: ["Indolenza e passività", "Negazione dei propri bisogni e desideri", "Procrastinazione cronica", "Fusione con gli altri (perdita di identità)", "Testardaggine passivo-aggressiva"],
+          luce: [
+            "Capacità di vedere tutti i punti di vista",
+            "Calma e stabilità emotiva",
+            "Accettazione e non giudizio",
+            "Capacità di mediare e riconciliare",
+            "Pazienza e tolleranza"
+          ],
+          ombra: [
+            "Indolenza e passività",
+            "Negazione dei propri bisogni e desideri",
+            "Procrastinazione cronica",
+            "Fusione con gli altri (perdita di identità)",
+            "Testardaggine passivo-aggressiva"
+          ],
           stress: "Diventa ansioso, ipervigile, cerca rassicurazione esterna, diventa dipendente dall'opinione altrui, si blocca nella paura.",
           crescita: "Diventa proattivo, si impegna in progetti significativi, sviluppa ambizione sana, agisce con scopo e determinazione.",
           stressVerso: "6",
           crescitaVerso: "3",
-          colore: "27ae60"
+          colore: "#27ae60"
         }
       };
 
@@ -583,17 +693,18 @@
       // Event listener per il bottone "Mostra"
       document.getElementById('mostraBtn')?.addEventListener('click', mostraTipoManuale);
 
-      // Permette di premere Enter nell'input
-      document.getElementById('numeroInput').addEventListener('keypress', function(e) {
+      // Permette di premere Enter nell'input (usa keydown)
+      numeroInput?.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
+          e.preventDefault();
           mostraTipoManuale();
         }
       });
 
-      // Tastiera: premi 1-9 per mostrare il tipo
-      document.addEventListener('keypress', (e) => {
-        const num = parseInt(e.key);
-        if (num >= 1 && num <= 9 && !document.getElementById('numeroInput').matches(':focus')) {
+      // Tastiera: premi 1-9 per mostrare il tipo (usa keydown e controllo activeElement)
+      document.addEventListener('keydown', (e) => {
+        const num = parseInt(e.key, 10);
+        if (Number.isInteger(num) && num >= 1 && num <= 9 && document.activeElement !== numeroInput) {
           mostraTipo(num);
         }
       });
